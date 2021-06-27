@@ -22,3 +22,8 @@ private:
 };
 
 } // namespace LK
+
+LK_API bool operator==(const char*, const LK::CString&);
+LK_API bool operator!=(const char*, const LK::CString&);
+LK_API bool operator==(const LK::CString&, const char*);
+LK_API bool operator!=(const LK::CString&, const char*);
