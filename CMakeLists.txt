@@ -13,6 +13,7 @@ set(CMAKE_CXX_VERSION 17)
 
 if (UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -g")
 endif ()
 
 add_library(LK SHARED
@@ -21,8 +22,10 @@ add_library(LK SHARED
         include/LK/Meta.h
         include/LK/CString.h src/CString.cpp
         include/LK/Assert.h
-        include/LK/UnitTest.h
-        src/UnitTest.cpp include/LK/Buffer.h include/LK/Algorithms.h)
+        include/LK/UnitTest.h src/UnitTest.cpp
+        include/LK/Buffer.h
+        include/LK/Algorithms.h
+        include/LK/Human.h src/Human.cpp)
 
 target_include_directories(LK PUBLIC ${CMAKE_SOURCE_DIR}/include)
 

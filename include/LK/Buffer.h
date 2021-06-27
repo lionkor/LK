@@ -13,12 +13,39 @@ namespace LK {
 template<typename T>
 class Buffer {
 public:
-    explicit Buffer(size_t initial_size)
+    explicit Buffer(size_t initial_size = 0)
         : m_data(new T[initial_size] {})
         , m_size(initial_size) {
     }
     virtual ~Buffer() {
         delete[] m_data;
+    }
+
+    void clear() {
+        resize_to(0);
+    }
+
+    size_t used_memory_in_bytes() const {
+        return sizeof(T) * m_size;
+    }
+
+    T& first() {
+        LK_ASSERT(!empty());
+        return m_data[0];
+    }
+    const T& first() const {
+        LK_ASSERT(!empty());
+        return m_data[0];
+    }
+
+    T& last() {
+        LK_ASSERT(!empty());
+        return m_data[m_size - 1];
+    }
+
+    const T& last() const {
+        LK_ASSERT(!empty());
+        return m_data[m_size - 1];
     }
 
     void append(const T& obj) {

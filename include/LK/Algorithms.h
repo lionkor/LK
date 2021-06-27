@@ -41,12 +41,14 @@ namespace Memory {
     }
     template<typename T>
     void fill(T* buf, size_t n, T&& value) {
+        LK_ASSERT(buf);
         for (size_t i = 0; i < n; ++i) {
             buf[i] = value;
         }
     }
     template<typename T>
     void fill(T* buf, size_t n, const T& value) {
+        LK_ASSERT(buf);
         for (size_t i = 0; i < n; ++i) {
             buf[i] = value;
         }
