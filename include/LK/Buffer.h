@@ -58,6 +58,18 @@ public:
         m_data[m_size - 1] = obj;
     }
 
+    void append(const Buffer& buf) {
+        auto old_size = m_size;
+        grow_by(buf.size());
+        LK::Memory::copy(m_data + old_size, buf.m_data, buf.size());
+    }
+
+    void append(Buffer&& buf) {
+        auto old_size = m_size;
+        grow_by(buf.size());
+        LK::Memory::move(m_data + old_size, buf.m_data, buf.size());
+    }
+
     void grow_by(size_t n) {
         resize_to(m_size + n);
     }
@@ -81,6 +93,16 @@ public:
             m_data = new_data;
         }
         m_size = new_size;
+    }
+
+    // copies a slice from the buffer into a new buffer
+    Buffer slice(size_t from, size_t to) {
+        LK_ASSERT(to >= from);
+        LK_ASSERT(from <= m_size);
+        LK_ASSERT(to <= m_size);
+        Buffer buf(to - from);
+        LK::Memory::copy(buf.m_data, m_data + from, to - from);
+        return buf;
     }
 
     void fill(T&& value) {

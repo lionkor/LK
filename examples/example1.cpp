@@ -5,14 +5,25 @@
 
 int main() {
     LK::Buffer<int> buf(10);
-    for (;;) {
-        buf.grow_by(buf.size() / 5);
-        buf.fill(buf.size());
-        std::cout << "now " << buf.size() << " elements, using "
-                  << LK::Human::bytes_to_string(buf.used_memory_in_bytes()).data()
-                  << std::endl;
-        if (buf.used_memory_in_bytes() > 1.5 * LK::Human::GiB) {
-            break;
-        }
+    buf.fill(1);
+    LK::Buffer<int> buf2(5);
+    for (int i : buf) {
+        std::cout << "buf: " << i << std::endl;
+    }
+    buf2.fill(2);
+    for (int i : buf2) {
+        std::cout << "buf2: " << i << std::endl;
+    }
+    buf.append(LK::move(buf2));
+    for (int i : buf) {
+        std::cout << i << std::endl;
+    }
+    int k = 0;
+    for (int& i : buf) {
+        i = k++;
+    }
+    auto slice = buf.slice(0, 16);
+    for (int i : slice) {
+        std::cout << "sliced: " << i << std::endl;
     }
 }
