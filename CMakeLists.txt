@@ -29,8 +29,8 @@ add_library(LK SHARED
 
 target_include_directories(LK PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
+target_compile_definitions(LK PRIVATE -DLK_VERSION="${CMAKE_PROJECT_VERSION}" -DLK_BUILDING_DLL)
 if (UNIX)
-    target_compile_definitions(LK PRIVATE -DLK_VERSION="${CMAKE_PROJECT_VERSION}" -DLK_BUILDING_DLL)
     if (LK_ENABLE_ASSERT)
         target_compile_definitions(LK PRIVATE -DLK_ENABLE_ASSERT=true)
     endif ()
