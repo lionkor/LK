@@ -1,0 +1,33 @@
+name: CMake Linux Build
+
+on: [push]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          submodules: 'true'
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{github.workspace}}/build-linux
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{github.workspace}}/build-linux
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DCMAKE_CXX_COMPILER=g++-10 -DLK_BUILD_TESTS=ON
+
+    - name: Build
+      working-directory: ${{github.workspace}}/build-linux
+      shell: bash
+      run: cmake --build . --config $BUILD_TYPE
+
+    - name: Run Tests
+      working-directory: ${{github.workspace}}/build-linux
+      shell: bash
+      run: ./test_buffer && ./test_cstring
