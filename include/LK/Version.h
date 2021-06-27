@@ -1,10 +1,11 @@
 #pragma once
 
-#include <LK/Meta.h>
-#include <LK/Types.h>
+#include "CString.h"
+#include "Meta.h"
+#include "Types.h"
 
 namespace LK {
 
-LK_API const char* version();
+LK_API CString version();
 
 };

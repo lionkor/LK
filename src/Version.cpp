@@ -1,3 +1,3 @@
-#include <LK/Version.h>
+#include "LK/Version.h"
 
-const char* LK::version() { return LK_VERSION; }
+LK::CString LK::version() { return LK_VERSION; }
