@@ -1,0 +1,6 @@
+*.o
+bin/
+.idea/
+.cache/
+compile_commands.json
+*.user
