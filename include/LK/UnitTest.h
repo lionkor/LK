@@ -10,6 +10,7 @@ LK_API extern size_t success_count;
 [[noreturn]] LK_API void finalize();
 }
 
+#define LK_TEST_SECTION(x) printf("-- %s --\n", (x));
 #define LK_TEST(x)                         \
     do {                                   \
         if (!(x)) {                        \

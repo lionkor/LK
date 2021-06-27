@@ -4,6 +4,7 @@
 
 int main() {
     {
+        LK_TEST_SECTION("empty string");
         LK::CString empty("");
         LK_TEST(empty.length() == 0);
         LK_TEST(empty == "");
@@ -11,11 +12,13 @@ int main() {
         LK_TEST(empty == empty);
     }
     {
+        LK_TEST_SECTION("regular short string");
         LK::CString words("hello, world");
         LK_TEST(words.length() == strlen(words.data));
         LK_TEST(words == words.data);
         LK_TEST(words.data == words);
         LK_TEST(words == "hello, world");
+        LK_TEST(words != "goodbye");
     }
     LK::UnitTest::finalize();
 }
