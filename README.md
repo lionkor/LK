@@ -1,5 +1,9 @@
 # LK - My Ultimate C++ Support Library
 
+
+[![Linux Build](https://github.com/lionkor/LK/actions/workflows/cmake-linux.yml/badge.svg)](https://github.com/lionkor/LK/actions/workflows/cmake-linux.yml)
+[![Windows Build](https://github.com/lionkor/LK/actions/workflows/cmake-windows.yml/badge.svg)](https://github.com/lionkor/LK/actions/workflows/cmake-windows.yml)
+
 ## License
 
 Licensed under GPL-3.0. Open to conversation; contact me
