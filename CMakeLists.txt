@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.15)
 
-option(LK_BUILD_EXAMPLES ON)
-option(LK_BUILD_TESTS ON)
-option(LK_ENABLE_ASSERT ON)
+option(LK_BUILD_EXAMPLES "Build LK example programs" ON)
+option(LK_BUILD_TESTS "Build LK unit tests" ON)
+option(LK_ENABLE_ASSERT "Keep enabled unless you know what you're doing" ON)
 
 project(LK
         VERSION 0.1.0
