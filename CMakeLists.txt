@@ -5,7 +5,7 @@ option(LK_BUILD_TESTS "Build LK unit tests" ON)
 option(LK_ENABLE_ASSERT "Keep enabled unless you know what you're doing" ON)
 
 project(LK
-        VERSION 0.1.0
+        VERSION 0.2.0
         LANGUAGES CXX
         )
 
