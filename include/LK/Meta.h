@@ -1,5 +1,10 @@
 #pragma once
 
+/*
+ * Various build-related things, such as symbol visibility control.
+ * Keep lean, please.
+ */
+
 // clang-format off
 #if defined _WIN32 || defined __CYGWIN__
   #ifdef LK_BUILDING_DLL

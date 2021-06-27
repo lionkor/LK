@@ -18,7 +18,7 @@ LK::CString::CString(const char* data)
     LK_ASSERT(data);
 }
 
-bool LK::CString::operator==(const LK::CString& str) {
+bool LK::CString::operator==(const LK::CString& str) const {
     if (!data || !str.data) {
         if (!data && !str.data) {
             return true; // nullptr == nullptr, why not
@@ -30,7 +30,7 @@ bool LK::CString::operator==(const LK::CString& str) {
     return strcmp(data, str.data) == 0;
 }
 
-bool LK::CString::operator!=(const LK::CString& str) {
+bool LK::CString::operator!=(const LK::CString& str) const {
     return !(*this == str);
 }
 

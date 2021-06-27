@@ -12,8 +12,8 @@ struct CString final {
     LK_API size_t length() const;
     LK_API operator const char*() { return data; }
 
-    LK_API bool operator==(const CString&);
-    LK_API bool operator!=(const CString&);
+    LK_API bool operator==(const CString&) const;
+    LK_API bool operator!=(const CString&) const;
 
     const char* data { nullptr };
 

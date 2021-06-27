@@ -22,7 +22,7 @@ add_library(LK SHARED
         include/LK/CString.h src/CString.cpp
         include/LK/Assert.h
         include/LK/UnitTest.h
-        src/UnitTest.cpp)
+        src/UnitTest.cpp include/LK/Buffer.h include/LK/Algorithms.h)
 
 target_include_directories(LK PUBLIC ${CMAKE_SOURCE_DIR}/include)
 
@@ -40,4 +40,6 @@ endif ()
 if (LK_BUILD_TESTS)
     add_executable(test_cstring tests/Test_CString.cpp)
     target_link_libraries(test_cstring LK)
+    add_executable(test_buffer tests/Test_Buffer.cpp)
+    target_link_libraries(test_buffer LK)
 endif ()
