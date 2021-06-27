@@ -4,6 +4,11 @@
 #include "Types.h"
 #include <stdio.h>
 
+/*
+ * This is a very *VERY* barebones unit test framework.
+ * It does enough for what I need in LK at this time.
+ */
+
 namespace LK::UnitTest {
 LK_API extern size_t fail_count;
 LK_API extern size_t success_count;
