@@ -9,7 +9,7 @@ project(LK
         LANGUAGES CXX
         )
 
-set(CMAKE_CXX_VERSION 17)
+set(CMAKE_CXX_STANDARD 17)
 
 if (UNIX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility=hidden")
