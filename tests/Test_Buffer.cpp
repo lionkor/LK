@@ -1,3 +1,5 @@
+#define LK_ENABLE_STD_EXCEPTION true
+
 #include <LK/Buffer.h>
 #include <LK/UnitTest.h>
 
@@ -22,6 +24,7 @@ int main() {
         }
         buf.shrink_by(100);
         LK_TEST(buf.size() == 0);
+        LK_TEST_EXPECT_THROW(buf[100] = 1, LK::ExceptionAssertionFailed);
     }
     LK::UnitTest::finalize();
 }

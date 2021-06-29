@@ -1,3 +1,4 @@
+#include "LK/Assert.h"
 #include "LK/CString.h"
 #include "LK/UnitTest.h"
 #include <cstring>
@@ -19,6 +20,11 @@ int main() {
         LK_TEST(words.data == words);
         LK_TEST(words == "hello, world");
         LK_TEST(words != "goodbye");
+    }
+    {
+        LK_TEST_SECTION("exceptions");
+        LK_TEST_EXPECT_THROW(LK::CString(nullptr), LK::ExceptionAssertionFailed);
+        LK_TEST_EXPECT_THROW(auto _ = LK::CString("hi") == nullptr, LK::ExceptionAssertionFailed);
     }
     LK::UnitTest::finalize();
 }

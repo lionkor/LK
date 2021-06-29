@@ -26,3 +26,18 @@ LK_API extern size_t success_count;
             LK::UnitTest::success_count++; \
         }                                  \
     } while (false)
+
+#define LK_TEST_EXPECT_THROW(x, exception_type)                           \
+    do {                                                                  \
+        bool did_throw = false;                                           \
+        try {                                                             \
+            x;                                                            \
+        } catch (const exception_type&) { did_throw = true; }             \
+        if (!did_throw) {                                                 \
+            printf("FAILED: %s did not throw %s\n", #x, #exception_type); \
+            LK::UnitTest::fail_count++;                                   \
+        } else {                                                          \
+            printf("OK    : %s did throw %s\n", #x, #exception_type);     \
+            LK::UnitTest::success_count++;                                \
+        }                                                                 \
+    } while (false)
